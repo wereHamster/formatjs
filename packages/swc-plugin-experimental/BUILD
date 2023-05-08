@@ -23,7 +23,7 @@ npm_package(
     visibility = ["//visibility:public"],
 )
 
-# NOTE: move this into its own Bazel rule and include common dependencies automatically.
+# NOTE: move this into its own Bazel macro and include common dependencies automatically.
 aspect_jest_test(
     name = "plugin_test",
     config = "//:jest-aspect.config",

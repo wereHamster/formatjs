@@ -1019,6 +1019,8 @@ impl<C: Clone + Comments, S: SourceMapper> VisitMut for FormatJSVisitor<C, S> {
     noop_visit_mut_type!();
 
     fn visit_mut_jsx_opening_element(&mut self, jsx_opening_elem: &mut JSXOpeningElement) {
+        println!("visit_mut_jsx_opening_element: {:?}", jsx_opening_elem);
+        
         jsx_opening_elem.visit_mut_children_with(self);
 
         let name = &jsx_opening_elem.name;

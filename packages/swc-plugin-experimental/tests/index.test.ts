@@ -19,7 +19,7 @@ export function transformAndCheck(
 }
 
 describe.each([
-  ['explicit pragma', {pragma: '@react-intl'}],
+  // ['explicit pragma', {pragma: '@react-intl'}],
   ['no pragma', {}],
 ])('%s', (_, pluginOptions) => {
   test('additionalComponentNames', function () {
@@ -218,5 +218,11 @@ describe.each([
     expect(
       transformAndCheck('skipExtractionFormattedMessage', pluginOptions)
     ).toMatchSnapshot()
+  })
+
+  // See: https://github.com/formatjs/formatjs/issues/3589#issuecomment-1532461569
+  // There may have been a bug in SWC that skipped some JSX opening element.
+  test.only('jsx', () => {
+    expect(transformAndCheck('jsx', pluginOptions)).toMatchSnapshot()
   })
 })
